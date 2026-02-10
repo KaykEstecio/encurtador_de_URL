@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gerencie todos os seus links encurtados em um único lugar">
+    <title>Dashboard | Encurtador de URL</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="nav-brand">🔗 Encurtador</a>
+            <ul class="nav-links">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/static/dashboard.html" class="nav-link active">Dashboard</a></li>
+                <li><a href="/static/stats.html" class="nav-link">Estatísticas</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="hero">
+        <div class="container" style="max-width: 1000px;">
+            <div style="text-align: left; margin-bottom: 2rem;">
+                <h1 class="hero-title">🚀 Dashboard</h1>
+                <p class="hero-subtitle" style="margin-left: 0;">
+                    Gerencie seus links encurtados e acompanhe o desempenho em tempo real.
+                </p>
+            </div>
+
+            <!-- Stats Overview (Optional) -->
+            <div id="dashboardStats" class="stats-grid" style="margin-bottom: 2rem;">
+                <div class="stat-card">
+                    <div id="totalLinks" class="stat-value">0</div>
+                    <div class="stat-label">Total de Links</div>
+                </div>
+                <div class="stat-card">
+                    <div id="totalClicksAll" class="stat-value">0</div>
+                    <div class="stat-label">Total de Cliques</div>
+                </div>
+            </div>
+
+            <!-- List Area -->
+            <div class="card" style="padding: 1.5rem;">
+                <div class="link-table-container">
+                    <table class="link-table">
+                        <thead>
+                            <tr>
+                                <th>URL Alvo</th>
+                                <th>Link Curto</th>
+                                <th>Cliques</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="linksTableBody">
+                            <!-- Links serão inseridos aqui -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="noLinksMessage" class="hidden text-center" style="padding: 3rem;">
+                    <p style="font-size: 1.25rem; color: var(--text-muted);">Você ainda não encurtou nenhuma URL.</p>
+                    <a href="/" class="btn btn-primary" style="margin-top: 1rem;">✨ Encurtar Agora</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="/static/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof initDashboard === 'function') {
+                initDashboard();
+            }
+        });
+    </script>
+</body>
+</html>

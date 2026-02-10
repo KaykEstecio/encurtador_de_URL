@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Encurtador de URL moderno e rápido - Transforme URLs longas em links curtos e rastreáveis">
+    <title>Encurtador de URL | Rápido e Gratuito</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔗</text></svg>">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="nav-brand">🔗 Encurtador</a>
+            <ul class="nav-links">
+                <li><a href="/" class="nav-link active">Home</a></li>
+                <li><a href="/static/dashboard.html" class="nav-link">Dashboard</a></li>
+                <li><a href="/static/stats.html" class="nav-link">Estatísticas</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main class="hero">
+        <div class="container">
+            <!-- Hero Section -->
+            <h1 class="hero-title">🔗 Encurtador de URL</h1>
+            <p class="hero-subtitle">
+                Transforme URLs longas em links curtos, elegantes e fáceis de compartilhar. 
+                Rastreie cliques e obtenha estatísticas detalhadas em tempo real.
+            </p>
+            
+            <!-- Card Principal -->
+            <div class="card card-primary">
+                <form id="shortenForm">
+                    <!-- URL Input -->
+                    <div class="form-group">
+                        <label for="urlInput" class="form-label">Cole sua URL aqui</label>
+                        <input 
+                            type="url" 
+                            id="urlInput" 
+                            class="form-input" 
+                            placeholder="https://exemplo.com/sua-url-muito-longa-aqui"
+                            required
+                            autocomplete="url"
+                        >
+                    </div>
+                    
+                    <!-- Expiração -->
+                    <div class="form-group">
+                        <label for="expiresInput" class="form-label">Expiração (dias)</label>
+                        <input 
+                            type="number" 
+                            id="expiresInput" 
+                            class="form-input" 
+                            placeholder="7"
+                            min="1"
+                            max="365"
+                            value="7"
+                        >
+                        <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">
+                            Deixe em branco para links permanentes
+                        </p>
+                    </div>
+                    
+                    <!-- Botão Submit -->
+                    <button type="submit" id="submitBtn" class="btn btn-primary btn-block">
+                        ✨ Encurtar URL
+                    </button>
+                </form>
+                
+                <!-- Resultado (inicialmente oculto) -->
+                <div id="resultContainer" class="hidden"></div>
+            </div>
+            
+            <!-- Features -->
+            <div style="margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <div style="text-align: center; animation: fadeInUp 0.8s ease 0.6s backwards;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚡</div>
+                    <h3 style="font-size: 1rem; margin-bottom: 0.25rem;">Super Rápido</h3>
+                    <p style="font-size: 0.875rem; color: var(--text-muted);">Cache Redis para redirecionamento instantâneo</p>
+                </div>
+                
+                <div style="text-align: center; animation: fadeInUp 0.8s ease 0.7s backwards;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">📊</div>
+                    <h3 style="font-size: 1rem; margin-bottom: 0.25rem;">Estatísticas</h3>
+                    <p style="font-size: 0.875rem; color: var(--text-muted);">Acompanhe cliques, navegadores e países</p>
+                </div>
+                
+                <div style="text-align: center; animation: fadeInUp 0.8s ease 0.8s backwards;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔒</div>
+                    <h3 style="font-size: 1rem; margin-bottom: 0.25rem;">Seguro</h3>
+                    <p style="font-size: 0.875rem; color: var(--text-muted);">Links com expiração configurável</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- JavaScript -->
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

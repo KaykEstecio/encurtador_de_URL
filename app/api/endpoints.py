@@ -116,3 +116,42 @@ async def redirect_to_url(
     )
 
     return RedirectResponse(url_entry.target_url)
+
+@router.get("/links", response_model=URLListResponse)
+def list_links(db: Session = Depends(get_session)):
+    """
+    Lista todas as URLs para o dashboard.
+    """
+    links = db.query(URL).order_by(URL.created_at.desc()).all()
+    
+    url_infos = []
+    for link in links:
+        url_infos.append(URLInfo(
+            id=link.id,
+            key=link.key,
+            target_url=link.target_url,
+            is_active=link.is_active,
+            clicks=link.clicks,
+            created_at=link.created_at,
+            expires_at=link.expires_at,
+            short_url=f"{settings.BASE_URL}/{link.key}"
+        ))
+        
+    return URLListResponse(links=url_infos, total=len(url_infos))
+
+@router.patch("/links/{short_code}/deactivate")
+def deactivate_link(short_code: str, db: Session = Depends(get_session)):
+    """
+    Desativa um link encurtado.
+    """
+    url_entry = db.query(URL).filter(URL.key == short_code).first()
+    if not url_entry:
+        raise HTTPException(status_code=404, detail="URL não encontrada")
+        
+    url_entry.is_active = False
+    db.commit()
+    
+    # Limpar cache se existir
+    # await cache.delete(short_code) - Adicionar se necessário
+    
+    return {"status": "success", "message": f"Link {short_code} desativado"}

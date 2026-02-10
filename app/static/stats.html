@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Visualize estatísticas detalhadas dos seus links encurtados">
+    <title>Estatísticas | Encurtador de URL</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="nav-brand">🔗 Encurtador</a>
+            <ul class="nav-links">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/static/dashboard.html" class="nav-link">Dashboard</a></li>
+                <li><a href="/static/stats.html" class="nav-link active">Estatísticas</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main class="hero">
+        <div class="container">
+            <!-- Header -->
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <a href="/" style="display: inline-block; color: var(--text-secondary); text-decoration: none; margin-bottom: 1rem; transition: color 0.3s;">
+                    ← Voltar para Home
+                </a>
+                <h1 class="hero-title">📊 Estatísticas</h1>
+                <p class="hero-subtitle">
+                    Visualize métricas detalhadas sobre os acessos ao seu link encurtado
+                </p>
+            </div>
+            
+            <!-- Card de Busca -->
+            <div class="card card-primary">
+                <form id="statsForm">
+                    <div class="form-group">
+                        <label for="codeInput" class="form-label">Código do Link</label>
+                        <input 
+                            type="text" 
+                            id="codeInput" 
+                            class="form-input" 
+                            placeholder="abc123"
+                            required
+                            autocomplete="off"
+                        >
+                        <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">
+                            Digite o código curto da URL (ex: se a URL é http://localhost:8000/abc123, digite "abc123")
+                        </p>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">
+                        📊 Ver Estatísticas
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Container de Estatísticas (inicialmente oculto) -->
+            <div id="statsContainer" class="hidden" style="margin-top: 2rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+                <!-- Estatísticas serão inseridas aqui via JavaScript -->
+            </div>
+            
+            <!-- Informações Adicionais -->
+            <div style="margin-top: 3rem; text-align: center; max-width: 600px; margin-left: auto; margin-right: auto;">
+                <div class="card" style="padding: 1.5rem;">
+                    <h3 style="font-size: 1.25rem; margin-bottom: 1rem;">ℹ️ Sobre as Estatísticas</h3>
+                    <div style="text-align: left; color: var(--text-secondary); font-size: 0.875rem; line-height: 1.8;">
+                        <p style="margin-bottom: 0.75rem;">
+                            <strong style="color: var(--text-primary);">Total de Cliques:</strong> Número total de vezes que o link foi acessado
+                        </p>
+                        <p style="margin-bottom: 0.75rem;">
+                            <strong style="color: var(--text-primary);">Navegadores:</strong> Distribuição de acessos por navegador (Chrome, Firefox, Safari, etc.)
+                        </p>
+                        <p style="margin-bottom: 0.75rem;">
+                            <strong style="color: var(--text-primary);">Sistemas Operacionais:</strong> Dispositivos utilizados para acessar o link
+                        </p>
+                        <p style="margin-bottom: 0;">
+                            <strong style="color: var(--text-primary);">Países:</strong> Localização geográfica dos visitantes
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- JavaScript -->
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

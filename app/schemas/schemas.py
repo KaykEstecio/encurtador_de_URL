@@ -21,3 +21,17 @@ class StatsResponse(BaseModel):
     browsers: dict[str, int]
     countries: dict[str, int]
     os: dict[str, int]
+
+class URLInfo(BaseModel):
+    id: int
+    key: str
+    target_url: str
+    is_active: bool
+    clicks: int
+    created_at: datetime
+    expires_at: Optional[datetime]
+    short_url: str
+
+class URLListResponse(BaseModel):
+    links: list[URLInfo]
+    total: int

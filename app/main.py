@@ -1,5 +1,8 @@
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from contextlib import asynccontextmanager
+from pathlib import Path
 from app.core.config import settings
 from app.core.database import init_db
 from app.api.endpoints import router
@@ -19,8 +22,15 @@ app = FastAPI(
     lifespan=lifespan
 )
 
+# Montar arquivos estáticos
+static_path = Path(__file__).parent / "static"
+app.mount("/static", StaticFiles(directory=str(static_path)), name="static")
+
+# Incluir rotas da API
 app.include_router(router)
 
 @app.get("/")
-def health_check():
-    return {"status": "ok", "service": settings.PROJECT_NAME}
+def home():
+    """Serve a página inicial"""
+    return FileResponse(static_path / "index.html")
+
